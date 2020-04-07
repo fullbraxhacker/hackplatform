@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import moment from 'moment-timezone'
 import { push } from 'connected-react-router'
@@ -11,7 +11,6 @@ import PageHeader from 'components/generic/PageHeader'
 import GradientBox from 'components/generic/GradientBox'
 import Button from 'components/generic/Button'
 import SubmissionForm from './SubmissionForm'
-import ProjectsList from './ProjectsList'
 
 import * as DashboardSelectors from 'redux/dashboard/selectors'
 
@@ -24,28 +23,6 @@ export default () => {
     const isSubmissionsUpcoming = useSelector(
         DashboardSelectors.isSubmissionsUpcoming
     )
-    const projects = useSelector(DashboardSelectors.projects)
-
-    const [selectedProjectId, setSelectedProjectId] = useState(undefined)
-    const [showSubmissionForm, setShowSubmissionForm] = useState(false)
-    const [showProjectSelector, setShowProjectSelector] = useState(false)
-
-    useEffect(() => {
-        if (projects && event) {
-            if (event.allowProjectSubmissionsPerChallenge) {
-                setShowProjectSelector(true)
-            } else {
-                setShowSubmissionForm(true)
-                if (projects.length) handleProjectSelected(projects[0]._id)
-            }
-        }
-    }, [projects, event])
-
-    const handleProjectSelected = id => {
-        setSelectedProjectId(id)
-        setShowSubmissionForm(id !== undefined)
-    }
-
     if (!event || teamLoading) {
         return <PageWrapper loading />
     }
@@ -190,35 +167,7 @@ export default () => {
                     />
                 </GradientBox>
                 <Box p={1} />
-
-                {showProjectSelector && (
-                    <>
-                        {selectedProjectId === undefined && (
-                            <ProjectsList
-                                projectSelectedCallback={id =>
-                                    handleProjectSelected(id)
-                                }
-                            />
-                        )}
-                        {selectedProjectId !== undefined && (
-                            <Box my={2}>
-                                <Button
-                                    color="theme_orange"
-                                    variant="contained"
-                                    onClick={() =>
-                                        handleProjectSelected(undefined)
-                                    }
-                                >
-                                    Back to Projects
-                                </Button>
-                            </Box>
-                        )}
-                    </>
-                )}
-                <Box p={1} />
-                {showSubmissionForm && (
-                    <SubmissionForm id={selectedProjectId} />
-                )}
+                <SubmissionForm />
             </React.Fragment>
         )
     }

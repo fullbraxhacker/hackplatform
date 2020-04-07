@@ -101,10 +101,6 @@ const settings = {
         required: false,
         value: process.env.SENDGRID_MAILING_LIST_ID || '7150117',
     },
-    WEBHOOK_API_KEY: {
-        required: false,
-        value: process.env.WEBHOOK_API_KEY || 'NotVerySafeWebhookApiKey',
-    },
 }
 
 const buildConfig = () => {

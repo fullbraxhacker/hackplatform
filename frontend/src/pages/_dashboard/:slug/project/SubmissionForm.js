@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react'
+import React, { useMemo } from 'react'
 
 import * as yup from 'yup'
 import { useSelector, useDispatch } from 'react-redux'
@@ -23,26 +23,12 @@ import * as SnackbarActions from 'redux/snackbar/actions'
 import * as AuthSelectors from 'redux/auth/selectors'
 
 //TODO make the form labels and hints customizable
-export default props => {
-    const id = props.id
+export default () => {
     const dispatch = useDispatch()
     const event = useSelector(DashboardSelectors.event)
+    const project = useSelector(DashboardSelectors.project)
+    const projectLoading = useSelector(DashboardSelectors.projectLoading)
     const idTokenData = useSelector(AuthSelectors.idTokenData)
-
-    const projects = useSelector(DashboardSelectors.projects)
-    const projectLoading = useSelector(DashboardSelectors.projectsLoading)
-
-    const [project, setProject] = useState(null)
-
-    useEffect(() => {
-        if (projects && projects.length && id) {
-            const foundProject = projects.find(p => p._id === id)
-            setProject(foundProject)
-        } else {
-            setProject(null)
-        }
-    }, [id, projects])
-
     const initialValues = {
         sourcePublic: true,
         hiddenMembers: [],
@@ -207,7 +193,7 @@ export default props => {
                                 render={({ field, form }) => (
                                     <FormControl
                                         label="Track"
-                                        hint="Choose the track you are participating with this project in. If you've completed multiple challenges from different tracks, choose the one that best matches this project."
+                                        hint="Choose the track you are participating on. If you've completed multiple challenges from different tracks, choose the one that best matches your project."
                                         touched={
                                             form.touched[field.name] ||
                                             formikProps.submitCount > 0
@@ -240,7 +226,7 @@ export default props => {
                                 render={({ field, form }) => (
                                     <FormControl
                                         label="Challenges"
-                                        hint="Which partner challenges do you want to submit your project in? You can choose up to 5. Note: make sure you read the event guidelines about how many challenges you can set here!"
+                                        hint="Which partner challenges do you want to submit your project in? You can choose up to 5."
                                         touched={
                                             form.touched[field.name] ||
                                             formikProps.submitCount > 0
@@ -304,8 +290,8 @@ export default props => {
                             name="demo"
                             render={({ field, form }) => (
                                 <FormControl
-                                    label="Demo URL or Coupon Code"
-                                    hint="Add the link of the working version of your project. Depending on the event, this could be a link to an API, a link to file or a presentation. Make sure the link is accessible for humans, as well as machines!"
+                                    label="Demo"
+                                    hint="Download your presentation video of the project to Vimeo and link it here. Max duration is 2 minutes. (Make sure everyone receiving the link has access to the video.) If you have any materials, such as a presentation deck or a demo, they should be presented in the video."
                                     touched={
                                         form.touched[field.name] ||
                                         formikProps.submitCount > 0
@@ -323,7 +309,7 @@ export default props => {
                                         onBlur={() =>
                                             form.setFieldTouched(field.name)
                                         }
-                                        placeholder="https://... or coupon_code"
+                                        placeholder="https://..."
                                     />
                                 </FormControl>
                             )}
@@ -459,7 +445,6 @@ export default props => {
                                 onClick={formikProps.submitForm}
                                 fullWidth
                                 disabled={
-                                    formikProps.isSubmitting ||
                                     Object.keys(formikProps.errors).length > 0
                                 }
                                 color="theme_turquoise"

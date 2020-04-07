@@ -32,8 +32,8 @@ controller.getAllProjectsByEvent = eventId => {
     })
 }
 
-controller.getProjectsByEventAndTeam = (eventId, teamId) => {
-    return Project.find({
+controller.getProjectByEventAndTeam = (eventId, teamId) => {
+    return Project.findOne({
         event: eventId,
         team: teamId,
     })
@@ -54,11 +54,10 @@ controller.createProjectForEventAndTeam = async (event, team, data) => {
 controller.updateProjectForEventAndTeam = async (event, team, data) => {
     const schema = yup.object().shape(ProjectSchema(event))
     const validatedData = await schema.validate(data, { stripUnknown: true })
-    const projects = await controller.getProjectsByEventAndTeam(
+    const project = await controller.getProjectByEventAndTeam(
         event._id,
         team._id
     )
-    const project = projects.find(p => p._id.toString() === data._id)
     project.set(validatedData)
 
     return project.save()

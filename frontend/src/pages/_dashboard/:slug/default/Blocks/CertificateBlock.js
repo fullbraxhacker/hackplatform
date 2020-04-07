@@ -20,9 +20,9 @@ export default () => {
     const event = useSelector(DashboardSelectors.event)
     const registration = useSelector(DashboardSelectors.registration)
     const userProfile = useSelector(UserSelectors.userProfile)
-    const project = useSelector(DashboardSelectors.projects)
+    const project = useSelector(DashboardSelectors.project)
     const eventLoading = useSelector(DashboardSelectors.eventLoading)
-    const projectLoading = useSelector(DashboardSelectors.projectsLoading)
+    const projectLoading = useSelector(DashboardSelectors.projectLoading)
 
     if (!EventHelpers.isEventOver(event, moment)) return null
     if (registration?.status !== RegistrationStatuses.asObject.checkedIn.id)

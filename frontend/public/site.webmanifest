@@ -1,6 +1,6 @@
 {
-    "name": "Tech Embassy Events",
-    "short_name": "Tech Embassy Events",
+    "name": "",
+    "short_name": "",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -9,7 +9,7 @@
         },
         {
             "src": "/android-chrome-384x384.png",
-            "sizes": "512x512",
+            "sizes": "384x384",
             "type": "image/png"
         }
     ],

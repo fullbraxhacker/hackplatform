@@ -39,13 +39,10 @@ export default () => {
                             ></ListItemText>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails>
-                            <Box
-                                display="flex"
-                                flexDirection="column"
-                                style={{ width: '100%' }}
-                            >
-                                <ProjectsTable projects={projects} />
-                            </Box>
+                            <ProjectsTable
+                                baseURL={`/projects/${event.slug}/view/`}
+                                projects={projects}
+                            />
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
                 )

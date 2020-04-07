@@ -17,7 +17,7 @@ ProjectsService.getPublicProjectById = projectId => {
     return _axios.get(`/projects/id/${projectId}`)
 }
 
-ProjectsService.getProjectsForEventAndTeam = (idToken, eventSlug) => {
+ProjectsService.getProjectForEventAndTeam = (idToken, eventSlug) => {
     return _axios.get(`/projects/${eventSlug}/team`, config(idToken))
 }
 

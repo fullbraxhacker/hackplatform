@@ -16,8 +16,8 @@ export default () => {
     const dispatch = useDispatch()
     const event = useSelector(DashboardSelectors.event)
     const registration = useSelector(DashboardSelectors.registration)
-    const project = useSelector(DashboardSelectors.projects)
-    const projectLoading = useSelector(DashboardSelectors.projectsLoading)
+    const project = useSelector(DashboardSelectors.project)
+    const projectLoading = useSelector(DashboardSelectors.projectLoading)
     const isSubmissionsUpcoming = useSelector(
         DashboardSelectors.isSubmissionsUpcoming
     )
