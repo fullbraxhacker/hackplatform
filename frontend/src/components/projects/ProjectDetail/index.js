@@ -9,7 +9,7 @@ import Image from 'components/generic/Image'
 import CenteredContainer from 'components/generic/CenteredContainer'
 import Markdown from 'components/generic/Markdown'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
-
+import ClapButton from 'react-clap-button'
 import ProjectTeam from './ProjectTeam'
 import Pagination from './Pagination'
 
@@ -85,6 +85,8 @@ const ProjectDetail = ({
 }) => {
     const classes = useStyles()
     const [index, setIndex] = useState(0)
+    // const onCountChange = ({ count, countTotal }) => { }
+    const [count, countTotal] = useState(0)
 
     if (!project) return null
 
@@ -267,6 +269,15 @@ const ProjectDetail = ({
                         hiddenUsers={project.hiddenMembers}
                         teamId={project.team}
                         showFullTeam={showFullTeam}
+                    />
+                </Box>
+                <Box mt={6}>
+                    <ClapButton
+                        count={0}
+                        countTotal={0}
+                        maxCount={300}
+                        isClicked={false}
+                        onCountChange={countTotal}
                     />
                 </Box>
                 <Box height={200} />

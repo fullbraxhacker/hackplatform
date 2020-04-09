@@ -7,20 +7,17 @@ Put these environment variables in `./frontend/.env` - you'll need to create the
 ```
 ### Required values
 PORT=3000
-REACT_APP_CLOUDINARY_CLOUD_NAME=hackjunction-dev
-REACT_APP_AUTH0_DOMAIN=
-REACT_APP_AUTH0_CLIENT_ID=
 REACT_APP_BASE_URL=http://localhost:3000
 REACT_APP_IS_DEBUG=True
-REACT_APP_AUTH0_DOMAIN=
-REACT_APP_AUTH0_CLIENT_ID=
-REACT_APP_CLOUDINARY_CLOUD_NAME=
+REACT_APP_AUTH0_DOMAIN=hackjunction-dev.eu.auth0.com
+REACT_APP_AUTH0_CLIENT_ID=cGjPXy4hjLz6qfKQrK0Ot3IbonxUWJVi
+REACT_APP_CLOUDINARY_CLOUD_NAME=hackjunction-dev
 
 ### Extra values
-REACT_APP_FACEBOOK_PIXEL_ID=
-REACT_APP_LOGROCKET_ID=
-REACT_APP_HOTJAR_ID=
-REACT_APP_HOTJAR_SV=
+REACT_APP_FACEBOOK_PIXEL_ID=1999365573713460
+REACT_APP_LOGROCKET_ID=ja746e/junction-app-production
+REACT_APP_HOTJAR_ID=1179129
+REACT_APP_HOTJAR_SV=6
 
 ### Customization values
 REACT_APP_PAGE_TITLE=LOCAL Junkkari
@@ -31,33 +28,5 @@ REACT_APP_SEO_TWITTER_HANDLE=@visathebean
 
 ### Production values
 REACT_APP_API_BASE_URL=https://cms.www.hackjunction.com
-REACT_APP_MAPBOX_TOKEN=
-```
-
-### Backend environment variables
-
-Put these environment variables in `./backend/.env` - you'll need to create the file as it is ignored from Git.
-
-```
-PORT=2222
-AUTH0_DOMAIN=
-AUTH0_CLIENT_ID=
-AUTH0_CLIENT_SECRET=
-AUTH0_AUTHORIZATION_EXTENSION_URL=
-ID_TOKEN_NAMESPACE=https://app.hackjunction.com/
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-CLOUDINARY_FOLDER=junctionapp-dev
-SENDGRID_API_KEY=SG.
-SENDGRID_FROM_EMAIL=noreply-dev@hackjunction.com
-SENDGRID_FROM_NAME=Junction (Development)
-SENDGRID_ACCEPTED_TEMPLATE=
-SENDGRID_REJECTED_TEMPLATE=
-SENDGRID_GENERIC_TEMPLATE=
-MONGODB_URI=mongodb://localhost/junctionapp
-FRONTEND_URL=http://localhost:3000
-DEVTOOLS_ENABLED=true
-ADMIN_TOKEN=foobar
-HASH_SALT=
+REACT_APP_MAPBOX_TOKEN=pk.eyJ1IjoiaGFja2p1bmN0aW9uIiwiYSI6ImNqdnFqaGtsMjI1ZWM0Ym9mZGg1cTNrODgifQ.opDfJH_G3cznE63MLRQ9ww
 ```
